@@ -1,0 +1,72 @@
+<div class="alan-btn"></div>
+<script type="text/javascript"
+src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
+<style>
+   
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="card"><p style="position: absolute; z-index: 100; color: white; left: 1000px; top: 10px; margin: 0; font-family: sans-serif; font-size: 26px">
+  <button class="btn play">&#9205; Play</button></p>
+</div>
+
+
+<div style="position: relative;">
+    <p style="position: absolute; z-index: 10; color: white; left: 400px; top: 5px; margin: 0; font-family: sans-serif; font-size: 26px">
+        <span>Space Invaders with Alan AI</span></p>
+
+
+<div style="position: relative;">
+    <p style="position: absolute; z-index: 10; color: white; left: 10px; top: 5px; margin: 0; font-family: sans-serif; font-size: 14px">
+        <span>Score:</span> <span id="scoreEl">0</span></p>
+    <canvas></canvas>
+</div>
+<script src="./index.js"></script>
+
+
+<script>
+    var alanBtnInstance = alanBtn({
+      key: "c54eede3813a48473480b04cc56c62e72e956eca572e1d8b807a3e2338fdd0dc/stage",
+      onCommand: function (commandData) {
+        if(commandData.command === "Restarting-Game") {
+                restartButton()
+        }
+        if (commandData.command === "moveLeft") {
+                voiceCommand = true;
+                leftButton()
+                voiceCommand = false;
+        }
+        if (commandData.command === "moveRight") {
+                voiceCommand = true;    
+                rightButton()
+                voiceCommand = false;
+        }
+        if (commandData.command === "fireButton") {
+                shootButton()
+        }
+        if (commandData.command === "blastButton") {
+                bombButton()
+        }
+        if (commandData.command === "startButton") {
+                playGame()
+        }
+        if (commandData.command === "pauseButton") {
+                pauseGame()
+        }
+        if (commandData.command === "Lose") {
+                voiceCommand = true;
+                youLost()
+                voiceCommand = false;
+        }
+      },
+      rootEl: document.getElementById("alan-btn"),
+    });
+    </script>
